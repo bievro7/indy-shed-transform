@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Property Transformation - Indy Shed Company</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 10px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1a3a6b 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 { font-size: 26px; margin-bottom: 8px; }
+        .header .tagline { font-size: 15px; opacity: 0.95; font-weight: 500; }
+        .setup-box {
+            padding: 40px;
+            text-align: center;
+        }
+        .setup-box h2 { color: #2c5aa0; margin-bottom: 20px; }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            background: linear-gradient(135deg, #2c5aa0 0%, #1a3a6b 100%);
+            color: white;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(44, 90, 160, 0.4); }
+        .alert {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏡 Complete Property Transformation System</h1>
+            <p class="tagline">Transform Your Garage, Yard, and Storage with AI</p>
+        </div>
+        
+        <div class="setup-box">
+            <h2>⚙️ One-Time Setup</h2>
+            <p style="margin-bottom: 20px; color: #666;">Enter your OpenAI API key to enable AI visualizations.</p>
+            
+            <div class="form-group">
+                <label>OpenAI API Key</label>
+                <input type="password" id="apiKeyInput" placeholder="sk-...">
+                <small style="color: #666; display: block; margin-top: 8px;">
+                    Get your key at <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com/api-keys</a>
+                </small>
+            </div>
+            
+            <button class="btn" onclick="saveAndStart()">Save & Start</button>
+            
+            <div class="alert">
+                <strong>💡 Quick Setup:</strong><br>
+                1. Visit platform.openai.com<br>
+                2. Create account & add payment method<br>
+                3. Generate API key<br>
+                4. Paste above<br><br>
+                <strong>Cost:</strong> ~$0.12 per visualization
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedKey = localStorage.getItem('openai_api_key');
+            if (savedKey) {
+                alert('API key already configured! Ready to use.');
+            }
+        });
+        
+        function saveAndStart() {
+            const key = document.getElementById('apiKeyInput').value.trim();
+            if (!key || !key.startsWith('sk-')) {
+                alert('Please enter a valid OpenAI API key (starts with sk-)');
+                return;
+            }
+            localStorage.setItem('openai_api_key', key);
+            alert('API key saved! App is ready to use. (Full features coming soon - this is your working setup page!)');
+        }
+    </script>
+</body>
+</html>
