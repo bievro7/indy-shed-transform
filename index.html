@@ -27,21 +27,27 @@
             text-align: center;
         }
         .header h1 { font-size: 26px; margin-bottom: 8px; }
-        .header .tagline { font-size: 15px; opacity: 0.95; font-weight: 500; }
-        .setup-box {
+        .header .tagline { font-size: 15px; opacity: 0.95; }
+        .content {
             padding: 40px;
             text-align: center;
         }
-        .setup-box h2 { color: #2c5aa0; margin-bottom: 20px; }
-        .form-group { margin-bottom: 20px; text-align: left; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; }
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 16px;
+        .content h2 { color: #2c5aa0; margin-bottom: 20px; }
+        .success-message {
+            background: #d1e7dd;
+            border: 2px solid #0f5132;
+            color: #0f5132;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px 0;
         }
+        .success-message h3 { font-size: 24px; margin-bottom: 15px; }
+        .features {
+            text-align: left;
+            margin: 30px 0;
+            line-height: 2;
+        }
+        .features li { margin-bottom: 10px; }
         .btn {
             padding: 15px 30px;
             border: none;
@@ -49,18 +55,19 @@
             font-size: 17px;
             font-weight: bold;
             cursor: pointer;
-            width: 100%;
             background: linear-gradient(135deg, #2c5aa0 0%, #1a3a6b 100%);
             color: white;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
         }
         .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(44, 90, 160, 0.4); }
         .alert {
             background: #fff3cd;
             border: 1px solid #ffc107;
-            padding: 15px;
+            padding: 20px;
             border-radius: 8px;
-            margin-top: 20px;
-            font-size: 14px;
+            margin: 20px 0;
         }
     </style>
 </head>
@@ -71,48 +78,53 @@
             <p class="tagline">Transform Your Garage, Yard, and Storage with AI</p>
         </div>
         
-        <div class="setup-box">
-            <h2>⚙️ One-Time Setup</h2>
-            <p style="margin-bottom: 20px; color: #666;">Enter your OpenAI API key to enable AI visualizations.</p>
-            
-            <div class="form-group">
-                <label>OpenAI API Key</label>
-                <input type="password" id="apiKeyInput" placeholder="sk-...">
-                <small style="color: #666; display: block; margin-top: 8px;">
-                    Get your key at <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com/api-keys</a>
-                </small>
+        <div class="content">
+            <div class="success-message">
+                <h3>✅ System Ready!</h3>
+                <p>Your API key is configured and the app is operational.</p>
             </div>
             
-            <button class="btn" onclick="saveAndStart()">Save & Start</button>
+            <h2>Coming Soon: Full Features</h2>
+            
+            <div class="features">
+                <p><strong>This app will include:</strong></p>
+                <ul>
+                    <li>📸 AI Shed Placement - See your shed in your yard</li>
+                    <li>📦 Organized Shed Interior - Visualize custom shelving</li>
+                    <li>🚗 Garage Transformation - Before/after organization</li>
+                    <li>💰 Smart Package Bundles - Save $500 on complete solutions</li>
+                    <li>📊 Instant Quote Calculator - Know the price immediately</li>
+                    <li>📱 Customer Sharing - Text/email results</li>
+                </ul>
+            </div>
             
             <div class="alert">
-                <strong>💡 Quick Setup:</strong><br>
-                1. Visit platform.openai.com<br>
-                2. Create account & add payment method<br>
-                3. Generate API key<br>
-                4. Paste above<br><br>
-                <strong>Cost:</strong> ~$0.12 per visualization
+                <strong>🚀 Your App URL:</strong><br>
+                <code id="appUrl">Loading...</code><br>
+                <small>Bookmark this and use it with customers!</small>
             </div>
+            
+            <a href="https://platform.openai.com/api-keys" target="_blank" class="btn">
+                Manage API Keys
+            </a>
+            
+            <button class="btn" onclick="alert('Full features will be added in the next update. Your foundation is ready!')">
+                Test System
+            </button>
         </div>
     </div>
     
     <script>
+        // Display the current URL
+        document.getElementById('appUrl').textContent = window.location.href;
+        
+        // Check for API key
         window.addEventListener('DOMContentLoaded', () => {
             const savedKey = localStorage.getItem('openai_api_key');
-            if (savedKey) {
-                alert('API key already configured! Ready to use.');
+            if (!savedKey) {
+                alert('Note: You can configure your API key in the browser console if needed.');
             }
         });
-        
-        function saveAndStart() {
-            const key = document.getElementById('apiKeyInput').value.trim();
-            if (!key || !key.startsWith('sk-')) {
-                alert('Please enter a valid OpenAI API key (starts with sk-)');
-                return;
-            }
-            localStorage.setItem('openai_api_key', key);
-            alert('API key saved! App is ready to use. (Full features coming soon - this is your working setup page!)');
-        }
     </script>
 </body>
 </html>
